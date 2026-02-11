@@ -46,7 +46,41 @@ namespace OgrenciNotMvc.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        // GET: Ogrenci/OgrenciGetir/5
+        public ActionResult OgrenciGetir(int? id) // nullable yaptık
+        {
+            if (id == null)
+                return RedirectToAction("Index"); // id gelmezse anasayfaya at
+
+            var ogrenci = db.tblOgrencilers.Find(id);
+            if (ogrenci == null)
+                return HttpNotFound();
+
+            return View(ogrenci);
+        }
+
+        // POST: Ogrenci/OgrenciGetir
+        [HttpPost]
+        public ActionResult OgrenciGetir(tblOgrenciler model)
+        {
+            if (ModelState.IsValid)
+            {
+                var ogrenci = db.tblOgrencilers.Find(model.OGRENCIID);
+                if (ogrenci != null)
+                {
+                    ogrenci.OGRENCIAD = model.OGRENCIAD;
+                    ogrenci.OGRENCISOYADI = model.OGRENCISOYADI;
+                    ogrenci.OGRENCIFOTOGRAF = model.OGRENCIFOTOGRAF;
+                    ogrenci.OGRENCIKULUP = model.OGRENCIKULUP;
+                    ogrenci.OGRENCICINSIYET = model.OGRENCICINSIYET;
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View(model);
+        }
         
-       
     }
 }

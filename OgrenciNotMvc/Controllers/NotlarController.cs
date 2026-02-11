@@ -29,5 +29,12 @@ namespace OgrenciNotMvc.Controllers
             return RedirectToAction("Index");
 
         }
+        public ActionResult NotGetir(int id) 
+        {
+            var notlar = db.tblNotlars.Find(id);
+            return View("NotGetir",notlar);
+
+            
+        }
     }
 }

@@ -613,6 +613,8 @@
     <Content Include="Views\CanliDers\Ekle.cshtml" />
     <Content Include="Views\CanliDers\Index.cshtml" />
     <Content Include="Views\Default\OgrenciGetir.cshtml" />
+    <Content Include="Views\Ogrenci\OgrenciGetir.cshtml" />
+    <Content Include="Views\Notlar\NotGetir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
