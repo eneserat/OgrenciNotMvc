@@ -1,0 +1,33 @@
+﻿@model OgrenciNotMvc.Models.EntityFramework.tblCanliDersler
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <label>Ders</label>
+    @Html.DropDownListFor(x => x.DERSID,
+        (SelectList)ViewBag.Dersler,
+        "Ders Seç",
+        new { @class = "form-control" })
+
+    <label>Öğretmen Adı</label>
+    @Html.TextBoxFor(x => x.OGRETMENAD, new { @class = "form-control" })
+
+    <label>Tarih</label>
+    @Html.TextBoxFor(x => x.TARIH, "{0:yyyy-MM-dd}",
+        new { @class = "form-control", type = "date" })
+
+    <label>Saat</label>
+    @Html.TextBoxFor(x => x.SAAT, new { @class = "form-control" })
+
+    <label>Canlı Ders Linki</label>
+    @Html.TextBoxFor(x => x.LINK, new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+}
+

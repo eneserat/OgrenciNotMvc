@@ -1,0 +1,48 @@
+﻿@using OgrenciNotMvc.Models.EntityFramework
+@model List<tblNotlar>
+
+@{
+    ViewBag.Title = "notHesapla";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Not Hesaplama Sayfası</h2>
+<br />
+
+<form class="form-group" method="post">
+    <div style="margin-top:10px">
+        <label>1. Sınav Notunuzu Giriniz:</label>
+        <input type="text" class="form-control" name="sinav1" />
+    </div>
+
+    <div style="margin-top:10px">
+        <label>2. Sınav Notunuzu Giriniz:</label>
+        <input type="text" class="form-control" name="sinav2" />
+    </div>
+
+    <div style="margin-top:10px">
+        <label>3. Sınav Notunuzu Giriniz:</label>
+        <input type="text" class="form-control" name="sinav3" />
+    </div>
+
+    <div style="margin-top:10px">
+        <label>Proje Notunuzu Giriniz:</label>
+        <input type="text" class="form-control" name="projeNotu" />
+    </div>
+
+    <div style="margin-top:15px">
+        <button type="submit" class="btn btn-primary">
+            Durum Sorgula
+        </button>
+    </div>
+</form>
+
+<br />
+
+@if (ViewBag.Ortalama != null)
+{
+    <div class="alert @(ViewBag.Durum == "Geçti" ? "alert-success" : "alert-danger")">
+        <strong>Ortalama:</strong> @ViewBag.Ortalama <br />
+        <strong>Durum:</strong> @ViewBag.Durum
+    </div>
+}
